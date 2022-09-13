@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="lsitOPMRPorCodigoANVISA" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8d824fd8-96ea-4524-a29c-cd8c6620cc83">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+ id_opme,
+ cod_tiss,
+ nome_comerc,
+ cod_anvisa
+FROM opme]]>
+	</queryString>
+	<field name="id_opme" class="java.lang.String"/>
+	<field name="cod_tiss" class="java.lang.String"/>
+	<field name="nome_comerc" class="java.lang.String"/>
+	<field name="cod_anvisa" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="136" splitType="Stretch">
+			<image>
+				<reportElement x="16" y="10" width="53" height="52" uuid="70769c55-c1a8-409a-8b60-dc5dcb99d9f4"/>
+				<imageExpression><![CDATA["Comseder.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="Column header" x="10" y="67" width="59" height="15" forecolor="#006666" uuid="f9d9be72-7211-460a-93b7-7f561a80e66e"/>
+				<textElement textAlignment="Center">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[COMSEDER]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Title" x="85" y="10" width="715" height="37" uuid="f0623c3d-2069-46e8-8040-ef6999bdd06a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="24" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[Sistema de Gestão de OPME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="85" y="52" width="715" height="22" uuid="e77883e1-09f0-4fac-a33c-4aa9ac98cb54"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" isBold="true" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[Listagem de OPME por Código ANVISA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="85" y="103" width="100" height="15" forecolor="#736343" uuid="bf4248f7-db3c-41f9-a598-8d43ac2929a0"/>
+				<text><![CDATA[Código ANVISA:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="198" y="103" width="200" height="15" uuid="27622090-9773-4127-9b40-d4af8bad803e"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cod_anvisa}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="802" height="1" uuid="f4a2cc8a-c117-4ea1-979d-f634b9d24f66"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="0" width="69" height="15" forecolor="#736343" uuid="36505cbe-2bcf-49e5-988c-dd50675a3e79"/>
+				<text><![CDATA[Ident.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="69" y="0" width="87" height="15" forecolor="#736343" uuid="4c1c966c-95d4-469f-bab6-a46ca6a0a977"/>
+				<text><![CDATA[Código TUSS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="169" y="0" width="631" height="15" forecolor="#736343" uuid="769b7274-6d40-4911-bf3f-d828b208705d"/>
+				<text><![CDATA[Nome comercial]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="802" height="15" uuid="d34d7009-af16-46d2-97f4-25cb95d22ba2"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="0" y="0" width="69" height="15" uuid="cef06dbc-5c9b-4c5c-a83f-6b6c480906a2"/>
+					<textElement>
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{id_opme}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="69" y="0" width="87" height="15" uuid="ae202d6f-f756-4309-9c3a-b1a166de358d"/>
+					<textElement>
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{cod_tiss}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="169" y="0" width="631" height="15" uuid="4eaa1a72-03d9-4a0a-b473-06131ce6ceae"/>
+					<textElement>
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{nome_comerc}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="6" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="802" height="1" uuid="ca7e4f9d-cd91-4dbb-bd81-2446b855a9b6"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-21" y="1" width="843" height="24" forecolor="#D0B48E" backcolor="#F2EBDF" uuid="cc07c129-3af7-418e-8682-e4605920648d"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="783" y="1" width="40" height="20" forecolor="#736343" uuid="4c111a75-9be3-4a37-b5b5-e8099209403e"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="703" y="1" width="80" height="20" forecolor="#736343" uuid="7fe41e03-a38a-4d7f-ac3e-3a9ea31e959c"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Paágina "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="22" y="1" width="197" height="20" forecolor="#736343" uuid="3a754f16-3db7-40a7-a1bd-19196c24cdda"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="3" splitType="Stretch"/>
+	</summary>
+</jasperReport>

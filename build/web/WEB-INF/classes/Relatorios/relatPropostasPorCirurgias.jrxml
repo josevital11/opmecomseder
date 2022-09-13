@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="relatPropostasPorCirurgias" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b28ec413-546f-449d-bd5c-9897bde92ad1">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<queryString>
+		<![CDATA[SELECT
+     cirurgia.`data_cir` AS cirurgia_data_cir,
+     beneficiario.`mat_benef` AS beneficiario_mat_benef,
+     beneficiario.`nome_benef` AS beneficiario_nome_benef,
+     fornecedor.`nome_forn` AS fornecedor_nome_forn,
+     procedimento.`cod_proc` AS procedimento_cod_proc,
+     procedimento.`nome_proc` AS procedimento_nome_proc,
+     proposta.`id_prop` AS proposta_id_prop,
+     proposta.`cod_tiss` AS proposta_cod_tiss,
+     proposta.`nome_comerc` AS proposta_nome_comerc,
+     proposta.`unidade` AS proposta_unidade,
+     proposta.`qtd` AS proposta_qtd,
+     proposta.`preco_unit` AS proposta_preco_unit,
+     proposta.`preco_total` AS proposta_preco_total,
+     proposta.`desc_forn` AS proposta_desc_forn
+     FROM `cirurgia` cirurgia
+     INNER JOIN `proposta` proposta ON cirurgia.`id_cir` = proposta.`id_cir`
+     INNER JOIN `fornecedor` fornecedor ON proposta.`id_forn` = fornecedor.`id_forn`
+     INNER JOIN `beneficiario` beneficiario ON cirurgia.`id_benef` = beneficiario.`id_benef`
+     INNER JOIN `procedimento` procedimento ON cirurgia.`id_proc` = procedimento.`id_proc`]]>
+	</queryString>
+	<field name="cirurgia_data_cir" class="java.sql.Timestamp"/>
+	<field name="beneficiario_mat_benef" class="java.lang.String"/>
+	<field name="beneficiario_nome_benef" class="java.lang.String"/>
+	<field name="fornecedor_nome_forn" class="java.lang.String"/>
+	<field name="procedimento_cod_proc" class="java.lang.String"/>
+	<field name="procedimento_nome_proc" class="java.lang.String"/>
+	<field name="proposta_id_prop" class="java.lang.Integer"/>
+	<field name="proposta_cod_tiss" class="java.lang.String"/>
+	<field name="proposta_nome_comerc" class="java.lang.String"/>
+	<field name="proposta_unidade" class="java.lang.String"/>
+	<field name="proposta_qtd" class="java.lang.Integer"/>
+	<field name="proposta_preco_unit" class="java.math.BigDecimal"/>
+	<field name="proposta_preco_total" class="java.math.BigDecimal"/>
+	<field name="proposta_desc_forn" class="java.math.BigDecimal"/>
+	<group name="procedimento_cod_proc">
+		<groupExpression><![CDATA[$F{procedimento_cod_proc}]]></groupExpression>
+		<groupHeader>
+			<band height="37">
+				<frame>
+					<reportElement mode="Opaque" x="-21" y="7" width="843" height="24" forecolor="#B89F7D" backcolor="#F2EBDF" uuid="3cd14b6b-4dc5-445a-b954-904c3fa00252"/>
+					<rectangle>
+						<reportElement mode="Opaque" x="21" y="0" width="36" height="24" backcolor="#736343" uuid="806fe153-41be-4c2d-9e27-1bc2ad6d1084"/>
+						<graphicElement>
+							<pen lineWidth="0.0"/>
+						</graphicElement>
+					</rectangle>
+					<textField>
+						<reportElement style="SubTitle" x="68" y="0" width="755" height="24" forecolor="#736343" uuid="8a487d30-8660-47d5-8841-9048b774d966"/>
+						<textElement>
+							<font isBold="true"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{procedimento_cod_proc}]]></textFieldExpression>
+					</textField>
+				</frame>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="6"/>
+		</groupFooter>
+	</group>
+	<group name="beneficiario_mat_benef">
+		<groupExpression><![CDATA[$F{beneficiario_mat_benef}]]></groupExpression>
+		<groupHeader>
+			<band height="30">
+				<textField>
+					<reportElement style="SubTitle" x="0" y="4" width="802" height="20" uuid="221729ed-3c5f-45b6-a40a-ba3c9a075e23"/>
+					<textElement>
+						<font size="16" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{beneficiario_mat_benef}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="136" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="164" height="126" uuid="69c94d69-b9e2-428d-8570-3e7b12137040"/>
+				<imageExpression><![CDATA["coffee.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="Title" x="270" y="0" width="263" height="62" uuid="c594c5b8-b206-474e-9b20-10ce76f39bbe"/>
+				<textElement verticalAlignment="Middle">
+					<font pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[Coffee Title]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="303" y="62" width="196" height="22" uuid="fe9d5eb1-9666-42ea-a3e4-cf6a1ed6c18f"/>
+				<textElement>
+					<font fontName="Times New Roman" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[Coffee SubTitle]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="172" y="94" width="383" height="42" uuid="ae6d67ec-c9e7-4011-a041-c93e885afd6f"/>
+				<textElement textAlignment="Right">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce auctor purus gravida arcu aliquam mattis. Donec et nulla libero, ut varius massa. Nulla sed turpis elit. Etiam aliquet mauris a ligula hendrerit in auctor leo lobortis.]]></text>
+			</staticText>
+			<image>
+				<reportElement x="633" y="-73" width="219" height="209" uuid="0ffb0521-efce-4b0c-b1e9-324b797029ad"/>
+				<imageExpression><![CDATA["coffee_stain.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="802" height="1" uuid="43d34f66-c2d7-457f-b1a5-ec7f995efb6d"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="0" width="80" height="15" forecolor="#736343" uuid="3dd368e4-7e89-4ca5-9ca1-f7278590a306"/>
+				<text><![CDATA[procedimento_nome_proc]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="80" y="0" width="80" height="15" forecolor="#736343" uuid="219639f2-90ea-4132-a8fc-166f0f32e2f8"/>
+				<text><![CDATA[beneficiario_nome_benef]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="160" y="0" width="80" height="15" forecolor="#736343" uuid="c8354cf7-3afd-476b-9df4-795267843be8"/>
+				<text><![CDATA[proposta_id_prop]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="240" y="0" width="80" height="15" forecolor="#736343" uuid="d5ce0b3b-c75c-421d-8b79-17a86ab78642"/>
+				<text><![CDATA[cirurgia_data_cir]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="320" y="0" width="80" height="15" forecolor="#736343" uuid="339fab0c-60e4-4362-83db-fb8c8ad97293"/>
+				<text><![CDATA[proposta_cod_tiss]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="400" y="0" width="80" height="15" forecolor="#736343" uuid="c698112a-00fb-472e-a3d2-1a221dfc346d"/>
+				<text><![CDATA[proposta_nome_comerc]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="480" y="0" width="80" height="15" forecolor="#736343" uuid="890b4c9c-3e7d-46d3-b9b0-02c8bcab8842"/>
+				<text><![CDATA[proposta_unidade]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="560" y="0" width="80" height="15" forecolor="#736343" uuid="43a70a6e-0242-4f37-95ef-7761bdc555fe"/>
+				<text><![CDATA[proposta_qtd]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="640" y="0" width="80" height="15" forecolor="#736343" uuid="cf7ecc00-1c90-4e91-ae68-dfd3d8066aef"/>
+				<text><![CDATA[proposta_preco_unit]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="720" y="0" width="80" height="15" forecolor="#736343" uuid="91e21237-37b4-478f-9b34-9dd131b63fca"/>
+				<text><![CDATA[proposta_preco_total]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="802" height="15" uuid="3ef2093d-b4c1-45f9-8eee-c28380a0c4e3"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="0" y="0" width="80" height="15" uuid="c02a8709-2343-456c-9e0f-770464f1921d"/>
+					<textFieldExpression><![CDATA[$F{procedimento_nome_proc}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="80" y="0" width="80" height="15" uuid="5f72de2b-3960-4742-a6de-fce5ba90de4d"/>
+					<textFieldExpression><![CDATA[$F{beneficiario_nome_benef}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="160" y="0" width="80" height="15" uuid="0058aacf-6837-4f14-bf86-4e79de682f6d"/>
+					<textFieldExpression><![CDATA[$F{proposta_id_prop}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="240" y="0" width="80" height="15" uuid="f81168dc-0a3e-4f88-8c35-c2c803d8acbf"/>
+					<textFieldExpression><![CDATA[$F{cirurgia_data_cir}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="320" y="0" width="80" height="15" uuid="4eeec39b-5cad-4a7e-a0f4-6f2fd1ab8989"/>
+					<textFieldExpression><![CDATA[$F{proposta_cod_tiss}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="400" y="0" width="80" height="15" uuid="5f2ba354-bab8-46e7-8edc-79520d6cde50"/>
+					<textFieldExpression><![CDATA[$F{proposta_nome_comerc}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="480" y="0" width="80" height="15" uuid="3a96363e-94c1-4e14-8510-7f6ee0b5f5bc"/>
+					<textFieldExpression><![CDATA[$F{proposta_unidade}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="560" y="0" width="80" height="15" uuid="1a1e2193-8381-4b13-8b3f-0e5afdf7e5eb"/>
+					<textFieldExpression><![CDATA[$F{proposta_qtd}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="640" y="0" width="80" height="15" uuid="e29c7b1d-0605-4648-9153-e1f4888e1603"/>
+					<textFieldExpression><![CDATA[$F{proposta_preco_unit}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="720" y="0" width="80" height="15" uuid="c516ab85-47a4-4e8b-97e3-57620e77c737"/>
+					<textFieldExpression><![CDATA[$F{proposta_preco_total}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="6" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="802" height="1" uuid="a620b56a-52a2-4df5-8a7c-b6b86f7a8c95"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-21" y="1" width="843" height="24" forecolor="#D0B48E" backcolor="#F2EBDF" uuid="0c50b978-8a32-4ec0-bd78-d56ce489fad8"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="783" y="1" width="40" height="20" forecolor="#736343" uuid="fac865e0-6749-4ff8-9eaf-fef650a056f9"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="703" y="1" width="80" height="20" forecolor="#736343" uuid="2872c150-7bc5-4577-a973-938c1e61836c"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="22" y="1" width="197" height="20" forecolor="#736343" uuid="cd197300-372b-44ef-8ef5-ad34a959f9dd"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

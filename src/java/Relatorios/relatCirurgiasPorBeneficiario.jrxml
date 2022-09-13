@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="relatCirurgiaPorBeneficiário" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f43d56b1-3687-4a10-8787-950c0270a5f9">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+ c.id_cir,
+ c.data_cir,
+ b.mat_benef,
+ b.nome_benef,
+ p.nome_proc
+FROM cirurgia c
+ INNER JOIN beneficiario b ON b.id_benef = c.id_benef
+ INNER JOIN procedimento  p ON c.id_proc = p.id_proc
+ORDER BY
+ b.mat_benef]]>
+	</queryString>
+	<field name="id_cir" class="java.lang.Integer"/>
+	<field name="data_cir" class="java.sql.Timestamp"/>
+	<field name="mat_benef" class="java.lang.String"/>
+	<field name="nome_benef" class="java.lang.String"/>
+	<field name="nome_proc" class="java.lang.String"/>
+	<group name="mat_benef">
+		<groupExpression><![CDATA[$F{mat_benef}]]></groupExpression>
+		<groupHeader>
+			<band height="4"/>
+		</groupHeader>
+		<groupFooter>
+			<band height="3"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="125" splitType="Stretch">
+			<staticText>
+				<reportElement style="Column header" x="10" y="67" width="59" height="15" forecolor="#006666" uuid="04cbff9d-ead0-4d5f-9db0-f9ec6c1bbe20"/>
+				<textElement textAlignment="Center">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[COMSEDER]]></text>
+			</staticText>
+			<image>
+				<reportElement x="16" y="10" width="53" height="52" uuid="d7cd0a9a-95b9-4094-8ffe-140b52d93dd4"/>
+				<imageExpression><![CDATA["Comseder.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="Title" x="85" y="10" width="715" height="37" uuid="2490d7d4-3e77-4078-a203-f318a1c94488"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="24" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[Sistema de Gestão de OPME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="85" y="52" width="715" height="22" uuid="2e16f696-b180-4914-9b2e-39cdaeba75a3"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" isBold="true" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[Relatório das cirurgias por beneficiário]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="276" y="92" width="486" height="22" uuid="63454157-3a0f-4cc1-b10c-55ed91561340"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nome_benef}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="SubTitle" x="129" y="90" width="133" height="24" forecolor="#736343" uuid="fe8d6bde-9a6e-4f38-8965-6fc08c09f44d"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mat_benef}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="16" y="92" width="102" height="22" forecolor="#736343" uuid="3002aafd-b687-44c0-9800-812bbe1276f5"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Beneficiário:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="276" y="-59" width="57" height="15" forecolor="#736343" uuid="ecab3249-8c9c-4d4a-8b68-b46f1039ab60"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Nome:]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="802" height="1" uuid="10950f9e-1231-467b-b64b-3d6928985e56"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="0" width="54" height="15" forecolor="#736343" uuid="398572af-db87-4fd3-9885-7e30eaa7d7f1"/>
+				<text><![CDATA[Ident.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="69" y="0" width="83" height="15" forecolor="#736343" uuid="2946dbe1-37d4-492c-af4a-a26a586a7ca8"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Data cirurugia]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="169" y="0" width="631" height="15" forecolor="#736343" uuid="44f6e8fc-e0e7-484a-b16c-0928ecd51ecf"/>
+				<text><![CDATA[Nome do procedimento]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="19" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Transparent" x="0" y="0" width="802" height="15" uuid="d4896937-954e-4630-ba29-32797ad98dab"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="0" y="0" width="54" height="15" uuid="7908c8b5-8998-4a0d-92d7-800cb18d282c"/>
+					<textFieldExpression><![CDATA[$F{id_cir}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy">
+					<reportElement style="Detail" x="69" y="0" width="83" height="15" uuid="ad4cf367-0b95-475a-b97d-496cd52ceb5b"/>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$F{data_cir}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="169" y="0" width="631" height="15" uuid="f2c76326-e405-4a9f-8f43-96d3b2229eb3"/>
+					<textFieldExpression><![CDATA[$F{nome_proc}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="32" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="802" height="1" uuid="c492afd5-2b38-409a-b008-f1a9158cae6e"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<frame>
+				<reportElement mode="Transparent" x="212" y="8" width="505" height="24" forecolor="#B89F7D" backcolor="#F2EBDF" uuid="19ecb1ae-e3ef-4db7-98be-bcebf5a74431"/>
+			</frame>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-21" y="1" width="843" height="24" forecolor="#D0B48E" backcolor="#F2EBDF" uuid="db57bbea-c555-4d69-a030-378c162e36e4"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="783" y="1" width="40" height="20" forecolor="#736343" uuid="5f93b4e7-ee92-4bb0-9df9-cc81c7828d7b"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="703" y="1" width="80" height="20" forecolor="#736343" uuid="a3c79a54-2f62-4901-9cc0-c3a2732848dc"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="22" y="1" width="197" height="20" forecolor="#736343" uuid="ff9d26f3-b56e-405b-9980-f76d616c8a9f"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

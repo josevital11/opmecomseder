@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.11.0.final using JasperReports Library version 6.11.0-0c4056ccaa4d25a5a8c45672d2f764ea3498bebb  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rer-prposta-do-fornecedor" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f6059efa-2ea1-4d91-a1df-ac2f22b262e3">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter "/>
+	<property name="com.jaspersoft.studio.data.sql.tables">
+		<![CDATA[b3BtZS5yZWxfcHJvcG9zdGEgLDE1LDE1LGY1YWU4ZGUxLWY0ZWYtNDU4NS1iMWRmLTc4MzYxODQx
+ZTJhYzs=]]>
+	</property>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="341"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="647"/>
+	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w1" value="676"/>
+	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w2" value="310"/>
+	<queryString>
+		<![CDATA[SELECT opme.rel_proposta.mat_benef,
+	opme.rel_proposta.nome_benef,
+	opme.rel_proposta.data_cir,
+	opme.rel_proposta.cod_proc,
+	opme.rel_proposta.nome_proc,
+	opme.rel_proposta.nome_forn,
+	opme.rel_proposta.desc_forn,
+	opme.rel_proposta.id_prop,
+	opme.rel_proposta.cod_tuss,
+	opme.rel_proposta.nome_comerc,
+	opme.rel_proposta.unidade,
+	opme.rel_proposta.qtd,
+	opme.rel_proposta.preco_unit,
+	opme.rel_proposta.preco_total
+FROM opme.rel_proposta]]>
+	</queryString>
+	<field name="mat_benef" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="mat_benef"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="rel_proposta"/>
+	</field>
+	<field name="nome_benef" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nome_benef"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="rel_proposta"/>
+	</field>
+	<field name="data_cir" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="data_cir"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="rel_proposta"/>
+	</field>
+	<field name="cod_proc" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="cod_proc"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="rel_proposta"/>
+	</field>
+	<field name="nome_proc" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nome_proc"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="rel_proposta"/>
+	</field>
+	<field name="nome_forn" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nome_forn"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="rel_proposta"/>
+	</field>
+	<field name="desc_forn" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="desc_forn"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="rel_proposta"/>
+	</field>
+	<field name="id_prop" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="id_prop"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="rel_proposta"/>
+	</field>
+	<field name="cod_tuss" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="cod_tuss"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="rel_proposta"/>
+	</field>
+	<field name="nome_comerc" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nome_comerc"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="rel_proposta"/>
+	</field>
+	<field name="unidade" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="unidade"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="rel_proposta"/>
+	</field>
+	<field name="qtd" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="qtd"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="rel_proposta"/>
+	</field>
+	<field name="preco_unit" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="preco_unit"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="rel_proposta"/>
+	</field>
+	<field name="preco_total" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="preco_total"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="rel_proposta"/>
+	</field>
+	<group name="Grupo fornecedor">
+		<groupHeader>
+			<band height="49">
+				<staticText>
+					<reportElement x="0" y="10" width="100" height="30" uuid="04daefcc-7899-480b-9b02-fe98a1881d71"/>
+					<textElement>
+						<font size="16" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Fornecedor:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="100" y="9" width="680" height="30" uuid="7e3416b3-4b14-4f29-b435-12cf9383f02a"/>
+					<textFieldExpression><![CDATA[$F{nome_forn}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="50"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="178" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="10" width="800" height="30" uuid="8d3066c4-ec04-4409-9b0a-60f1a1233434"/>
+				<textElement textAlignment="Center">
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Relatório: Proposta OPME por Fornecedor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="40" width="150" height="20" uuid="3aacb71a-afa8-480c-8563-621beaab2609"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Matrícula beneficiário:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="270" y="40" width="140" height="20" uuid="039955c5-418f-4250-9278-780365c34b3b"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nome beneficiário:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="79" width="160" height="20" uuid="6da3bbf5-acf3-48d5-95e8-3efc3174682b"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Código procedimento:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="580" y="80" width="100" height="19" uuid="9b554bc8-5b62-43c8-b6bf-f01026eba50b"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Data cirurgia:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="120" width="160" height="30" uuid="dea79608-5716-468d-b392-b98f1cc90744"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nome procedimento:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="170" y="40" width="90" height="20" uuid="93c6b9d2-2233-4611-ad13-a51b6eecf392"/>
+				<textFieldExpression><![CDATA[$F{mat_benef}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="420" y="40" width="371" height="20" uuid="67614335-e1ee-4bf4-9e25-d4aa31615294"/>
+				<textFieldExpression><![CDATA[$F{nome_benef}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="170" y="79" width="100" height="20" uuid="2c643d42-35dc-41db-8a99-e00c58197217"/>
+				<textFieldExpression><![CDATA[$F{cod_proc}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="680" y="80" width="100" height="19" uuid="1fd6c562-cbc1-4656-8c69-e10e58004389"/>
+				<textFieldExpression><![CDATA[$F{data_cir}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="170" y="120" width="600" height="20" uuid="d67a1fdb-93ed-4acc-9779-97d3f089c0a8"/>
+				<textFieldExpression><![CDATA[$F{nome_proc}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="60" height="30" uuid="f413e84d-1a32-490e-a271-470fc7ea6426">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="025ba223-773b-4aa0-b212-0fe0f5219aee"/>
+				</reportElement>
+				<text><![CDATA[id_prop]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="60" y="0" width="70" height="30" uuid="86c3f1c4-07f2-4617-9160-0aaf66d52d2e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f383a7f7-148f-4bb7-a852-37e26daf4388"/>
+				</reportElement>
+				<text><![CDATA[cod_tuss]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="130" y="0" width="410" height="30" uuid="8c8637cf-7b51-4981-9148-33a375d7fe88">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="41045fc5-0b8d-419f-b947-4ac948f6ae98"/>
+				</reportElement>
+				<text><![CDATA[nome_comerc]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="530" y="0" width="52" height="30" uuid="5a78b52c-e3bc-498b-a851-d8142bfcfeaa">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="15bdb986-544c-4ab7-b7ee-e9cdb9669323"/>
+				</reportElement>
+				<text><![CDATA[qtd]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="582" y="0" width="100" height="30" uuid="da2845c8-0b6d-46ea-9fc5-47c277b18081">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="52ffe5e1-a636-4383-9369-47f643ea8092"/>
+				</reportElement>
+				<text><![CDATA[preco_unit]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="680" y="0" width="100" height="30" uuid="83f9e673-d6cd-44c9-8515-6cee44f31a79">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d4300596-b7b8-4330-864d-5d06b46c9b30"/>
+				</reportElement>
+				<text><![CDATA[preco_total]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="60" height="30" uuid="7ffe44d4-b643-48ad-b35d-0a86b3181f33">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="025ba223-773b-4aa0-b212-0fe0f5219aee"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{id_prop}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="60" y="0" width="70" height="30" uuid="9e12dce3-b92f-42a4-9db0-e903ef0f2871">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f383a7f7-148f-4bb7-a852-37e26daf4388"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{cod_tuss}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="130" y="0" width="410" height="30" uuid="c6cbabb7-1a53-4a62-93ca-00651a6af629">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="41045fc5-0b8d-419f-b947-4ac948f6ae98"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{nome_comerc}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="528" y="0" width="52" height="30" uuid="d33c5cf3-1c33-48db-a6d8-16797078b33f">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="15bdb986-544c-4ab7-b7ee-e9cdb9669323"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{qtd}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="582" y="0" width="100" height="30" uuid="4f986299-ea0e-45a2-a858-9063877bc97d">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="52ffe5e1-a636-4383-9369-47f643ea8092"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{preco_unit}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="680" y="0" width="100" height="30" uuid="cf4e2d50-78a9-4a61-94da-60333e7e2d91">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d4300596-b7b8-4330-864d-5d06b46c9b30"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{preco_total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
